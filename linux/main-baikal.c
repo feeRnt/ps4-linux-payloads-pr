@@ -47,6 +47,12 @@ asm("ps4kexec:\n.incbin \"ps4-kexec-1200-baikal/kexec.bin\"\nps4kexec_end:\n");
 #elif defined(__12_50__)
 asm("ps4kexec:\n.incbin \"ps4-kexec-1250-baikal/kexec.bin\"\nps4kexec_end:\n");
 #include "magic.h"
+#elif defined(__13_00__)
+asm("ps4kexec:\n.incbin \"ps4-kexec-1300-baikal/kexec.bin\"\nps4kexec_end:\n");
+#include "magic.h"
+#elif defined(__13_02__)
+asm("ps4kexec:\n.incbin \"ps4-kexec-1302-baikal/kexec.bin\"\nps4kexec_end:\n");
+#include "magic.h"
 #else
 #error "unsupported firmware"
 #endif

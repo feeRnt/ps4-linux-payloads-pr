@@ -1,4 +1,4 @@
-FIRMWARES = 505 672 700 900 903 960 1000 1050 1100 1102 1150 1200 1250
+FIRMWARES = 505 672 700 900 903 960 1000 1050 1100 1102 1150 1200 1250 1300 1302
 SIZES     = 1gb 2gb 3gb 4gb
 # This uses a nested loop style logic to generate the file names automatically
 PAYLOADS = $(foreach fw,$(FIRMWARES), \
@@ -67,6 +67,14 @@ clean:
 	cd ps4-kexec-1250-pro; make clean
 	cd ps4-kexec-1250-baikal; make clean
 	cd ps4-kexec-1250-pro-baikal; make clean
+	cd ps4-kexec-1300; make clean
+	cd ps4-kexec-1300-pro; make clean
+	cd ps4-kexec-1300-baikal; make clean
+	cd ps4-kexec-1300-pro-baikal; make clean
+	cd ps4-kexec-1302; make clean
+	cd ps4-kexec-1302-pro; make clean
+	cd ps4-kexec-1302-baikal; make clean
+	cd ps4-kexec-1302-pro-baikal; make clean
 	cd ../lib/; make clean
 
 ../lib/lib.a:
@@ -806,8 +814,8 @@ fw1250/payload-1250-3gb.elf: ../lib/lib.a main.c ps4-kexec-1250/kexec.bin
 
 fw1250/payload-1250-4gb.elf: ../lib/lib.a main.c ps4-kexec-1250/kexec.bin
 	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__12_50__ -DPS4_12_50 -DVRAM_GB_DEFAULT=4 main.c -Wl,-gc-sections -o fw1250/payload-1250-4gb.elf -fPIE -ffreestanding
-ps4-kexec-1200-pro/kexec.bin:
-	cd ps4-kexec-1200-pro; make
+ps4-kexec-1250-pro/kexec.bin:
+	cd ps4-kexec-1250-pro; make
 
 fw1250/payload-1250-1gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1250-pro/kexec.bin
 	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__12_50__ -DPS4_12_50 main.c -Wl,-gc-sections -o fw1250/payload-1250-1gb-pro.elf -fPIE -ffreestanding
@@ -850,6 +858,118 @@ fw1250/payload-1250-3gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-125
 
 fw1250/payload-1250-4gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1250-pro-baikal/kexec.bin
 	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__12_50__ -DPS4_12_50 -DVRAM_GB_DEFAULT=4 main-baikal.c -Wl,-gc-sections -o fw1250/payload-1250-4gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-1gb.elf: ../lib/lib.a main.c ps4-kexec-1300/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 main.c -Wl,-gc-sections -o fw1300/payload-1300-1gb.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-2gb.elf: ../lib/lib.a main.c ps4-kexec-1300/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=2 main.c -Wl,-gc-sections -o fw1300/payload-1300-2gb.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-3gb.elf: ../lib/lib.a main.c ps4-kexec-1300/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=3 main.c -Wl,-gc-sections -o fw1300/payload-1300-3gb.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-4gb.elf: ../lib/lib.a main.c ps4-kexec-1300/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=4 main.c -Wl,-gc-sections -o fw1300/payload-1300-4gb.elf -fPIE -ffreestanding
+ps4-kexec-1300-pro/kexec.bin:
+	cd ps4-kexec-1300-pro; make
+
+fw1300/payload-1300-1gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1300-pro/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 main.c -Wl,-gc-sections -o fw1300/payload-1300-1gb-pro.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-2gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1300-pro/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=2 main.c -Wl,-gc-sections -o fw1300/payload-1300-2gb-pro.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-3gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1300-pro/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=3 main.c -Wl,-gc-sections -o fw1300/payload-1300-3gb-pro.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-4gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1300-pro/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=4 main.c -Wl,-gc-sections -o fw1300/payload-1300-4gb-pro.elf -fPIE -ffreestanding
+
+ps4-kexec-1300-baikal/kexec.bin:
+	cd ps4-kexec-1300-baikal; make
+
+fw1300/payload-1300-1gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-1gb-baikal.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-2gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-baikal/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=2 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-2gb-baikal.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-3gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=3 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-3gb-baikal.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-4gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=4 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-4gb-baikal.elf -fPIE -ffreestanding
+
+ps4-kexec-1300-pro-baikal/kexec.bin:
+	cd ps4-kexec-1300-pro-baikal; make
+
+fw1300/payload-1300-1gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-pro-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-1gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-2gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-pro-baikal/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=2 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-2gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-3gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-pro-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=3 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-3gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1300/payload-1300-4gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1300-pro-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_00__ -DPS4_13_00 -DVRAM_GB_DEFAULT=4 main-baikal.c -Wl,-gc-sections -o fw1300/payload-1300-4gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-1gb.elf: ../lib/lib.a main.c ps4-kexec-1302/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 main.c -Wl,-gc-sections -o fw1302/payload-1302-1gb.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-2gb.elf: ../lib/lib.a main.c ps4-kexec-1302/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=2 main.c -Wl,-gc-sections -o fw1302/payload-1302-2gb.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-3gb.elf: ../lib/lib.a main.c ps4-kexec-1302/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=3 main.c -Wl,-gc-sections -o fw1302/payload-1302-3gb.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-4gb.elf: ../lib/lib.a main.c ps4-kexec-1302/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=4 main.c -Wl,-gc-sections -o fw1302/payload-1302-4gb.elf -fPIE -ffreestanding
+ps4-kexec-1302-pro/kexec.bin:
+	cd ps4-kexec-1302-pro; make
+
+fw1302/payload-1302-1gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1302-pro/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 main.c -Wl,-gc-sections -o fw1302/payload-1302-1gb-pro.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-2gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1302-pro/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=2 main.c -Wl,-gc-sections -o fw1302/payload-1302-2gb-pro.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-3gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1302-pro/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=3 main.c -Wl,-gc-sections -o fw1302/payload-1302-3gb-pro.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-4gb-pro.elf: ../lib/lib.a main.c ps4-kexec-1302-pro/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=4 main.c -Wl,-gc-sections -o fw1302/payload-1302-4gb-pro.elf -fPIE -ffreestanding
+
+ps4-kexec-1302-baikal/kexec.bin:
+	cd ps4-kexec-1302-baikal; make
+
+fw1302/payload-1302-1gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-1gb-baikal.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-2gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-baikal/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=2 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-2gb-baikal.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-3gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=3 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-3gb-baikal.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-4gb-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=4 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-4gb-baikal.elf -fPIE -ffreestanding
+
+ps4-kexec-1302-pro-baikal/kexec.bin:
+	cd ps4-kexec-1302-pro-baikal; make
+
+fw1302/payload-1302-1gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-pro-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-1gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-2gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-pro-baikal/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=2 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-2gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-3gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-pro-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=3 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-3gb-pro-baikal.elf -fPIE -ffreestanding
+
+fw1302/payload-1302-4gb-pro-baikal.elf: ../lib/lib.a main-baikal.c ps4-kexec-1302-pro-baikal/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__13_02__ -DPS4_13_02 -DVRAM_GB_DEFAULT=4 main-baikal.c -Wl,-gc-sections -o fw1302/payload-1302-4gb-pro-baikal.elf -fPIE -ffreestanding
 
 %.bin: %.elf
 	objcopy $< --only-section .text --only-section .data --only-section .bss --only-section .rodata -O binary $@

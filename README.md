@@ -1,10 +1,10 @@
-# ![PS4](https://img.shields.io/badge/-PS4-003791?style=flat&logo=PlayStation) Linux Payloads for FW 5.05 - 12.52
+# ![PS4](https://img.shields.io/badge/-PS4-003791?style=flat&logo=PlayStation) Linux Payloads for FW 5.05 - 13.02
 (Southbridge: Aeolia & Belize(2) & Baikal)
 
 **Linux-Payloads** kexec for PlayStation 4.
 
 The host with precompiled Linux payloads only works with GoldHEN v2.4b18.5/v2.4b18.6 BinLoader. Just open the web browser and cache the host—it will also work offline too.
-https://ps4boot.github.io [▶️ click](https://www.youtube.com/watch?v=T3rXMWw6nIM)
+[PSFree-Enhanced](https://arabpixel.github.io/PSFree-Enhanced) [▶️ click](https://www.youtube.com/watch?v=T3rXMWw6nIM)
 
 you’ll find Linux payloads for your firmware, along with some extra payloads. The rest are already included in GoldHEN.
 
@@ -24,6 +24,8 @@ you’ll find Linux payloads for your firmware, along with some extra payloads. 
 *   FW 11.50 / 11.52 ✅
 *   FW 12.00 / 12.02 ✅ 
 *   FW 12.50 / 12.52 ✅
+*   FW 13.00 ✅
+*   13.02(?) ✅
 
 
 ## New
@@ -64,6 +66,6 @@ Baikal: ``console=uart8250,mmio32,0xC890E000``
 * marcan, shuffle2, eeply, rancido, valeryy, ethylamine, Joonie86 (Linux)
 * sleirsgoevy (for the script and better exploit FW 672) 
 * AlAzif / KiwiDog / Specter / Celesteblue / ChendoChap / zecoxao / SocraticBliss / ctn123 (Exploit and Fun Stuff for the Console)
-* bestpig / EchoStretch / EinTim23 / tihmstar (Offsets)
+* bestpig / EchoStretch / EinTim23 / tihmstar / ArabPixel (Offsets)
 * others ... 
 
